@@ -1,0 +1,97 @@
+step "run-a-script1" {
+    name = "Run a Script1"
+    properties = {
+        Octopus.Action.TargetRoles = "helloworld"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.SubstituteInFiles"
+            Octopus.Action.RunOnServer = "False"
+            Octopus.Action.Script.ScriptBody = "echo \"hello world\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+            Octopus.Action.SubstituteInFiles.Enabled = "True"
+        }
+    }
+}
+
+step "run-a-script2" {
+    name = "Run a Script2"
+    properties = {
+        Octopus.Action.TargetRoles = "helloworld"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.SubstituteInFiles"
+            Octopus.Action.RunOnServer = "False"
+            Octopus.Action.Script.ScriptBody = "echo \"hello world\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+            Octopus.Action.SubstituteInFiles.Enabled = "True"
+        }
+    }
+}
+
+step "run-a-script3" {
+    name = "Run a Script3"
+    properties = {
+        Octopus.Action.TargetRoles = "helloworld"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.SubstituteInFiles"
+            Octopus.Action.RunOnServer = "False"
+            Octopus.Action.Script.ScriptBody = "echo \"hello world\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+            Octopus.Action.SubstituteInFiles.Enabled = "True"
+        }
+    }
+}
+
+step "run-a-script4" {
+    name = "Run a Script4"
+    properties = {
+        Octopus.Action.TargetRoles = "helloworld"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.EnabledFeatures = "Octopus.Features.SubstituteInFiles"
+            Octopus.Action.RunOnServer = "False"
+            Octopus.Action.Script.ScriptBody = "echo \"hello world\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+            Octopus.Action.SubstituteInFiles.Enabled = "True"
+        }
+    }
+}
+
+step "do-wildfly-stuff" {
+    name = "Do Wildfly Stuff"
+    properties = {
+        Octopus.Action.TargetRoles = "helloworld"
+    }
+
+    action "enable-deployment-in-wildfly-or-eap" {
+        action_type = "Octopus.WildFlyState"
+        name = "Enable deployment in WildFly or EAP"
+        properties = {
+            Octopus.Action.RunOnServer = "False"
+            WildFly.Deploy.Controller = "vrdlsap105564.rjf.com"
+            WildFly.Deploy.Enabled = "True"
+            WildFly.Deploy.Name = "WeeklyDigestCMS%3Aweeklydigestcms-be@M0.1.0-SNAPSHOT-d9d6bc1b-163@328F1FC35A714748A72275CA3B2AC4FA.war"
+            WildFly.Deploy.Port = "29990"
+            WildFly.Deploy.Protocol = "remote+http"
+            WildFly.Deploy.ServerType = "Standalone"
+            WildFly.Deploy.User = "ChefDTC05"
+        }
+    }
+}
