@@ -1,0 +1,20 @@
+variable "somename1" {
+    value "somedevvalue1 for lance2" {
+        description = ""
+        environment = ["development"]
+    }
+}
+
+variable "somename2" {
+    value "somedevvalue2 for lance2" {
+        description = ""
+        environment = ["development"]
+    }
+}
+
+variable "somename3" {
+    value "somedevvalue3 for lance2" {
+        description = ""
+        environment = ["development"]
+    }
+}
