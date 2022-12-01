@@ -1,0 +1,61 @@
+step "run-a-script" {
+    name = "Run a Script"
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.RunOnServer = "true"
+            Octopus.Action.Script.ScriptBody = "echo \"Hello World from the powershell step!\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+        }
+        worker_pool = "default-worker-pool-1"
+    }
+}
+
+step "run-another-script" {
+    name = "Run another Script"
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.RunOnServer = "true"
+            Octopus.Action.Script.ScriptBody = "echo \"do some bash stuff!\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+        }
+        worker_pool = "default-worker-pool-1"
+    }
+}
+
+step "deploy-to-wildfly-or-eap" {
+    name = "Deploy to WildFly or EAP"
+    properties = {
+        Octopus.Action.TargetRoles = "app"
+    }
+
+    action {
+        action_type = "Octopus.WildFlyDeploy"
+        properties = {
+            Octopus.Action.EnabledFeatures = ",Octopus.Features.WildflyDeployCLI"
+            Octopus.Action.Package.DownloadOnTentacle = "False"
+            Octopus.Action.Package.FeedId = "octopus-server-built-in"
+            Octopus.Action.Package.PackageId = "abc"
+            WildFly.Deploy.Controller = "localhost"
+            WildFly.Deploy.Enabled = "True"
+            WildFly.Deploy.Port = "9990"
+            WildFly.Deploy.Protocol = "remote+http"
+            WildFly.Deploy.ServerType = "Standalone"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "abc"
+            properties = {
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
